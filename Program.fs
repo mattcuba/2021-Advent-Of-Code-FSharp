@@ -4,10 +4,6 @@ open System
 
 [<EntryPoint>]
 let main argv =
-    let lines = IO.File.ReadLines @"C:\adventofcode\01\input.txt"
-    let values = lines |> Seq.map System.Int32.Parse|> Seq.pairwise |> Seq.toList
-    let largerThan = values |> List.filter (fun (x,y) -> x < y)
-    printfn "Number of increases: %d" largerThan.Length
-
+    puzzle1.puz1
     puzzle2.puz2
     0 // return an integer exit code
