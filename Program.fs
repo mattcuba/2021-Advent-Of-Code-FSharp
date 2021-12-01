@@ -9,4 +9,5 @@ let main argv =
     let largerThan = values |> List.filter (fun (x,y) -> x < y)
     printfn "Number of increases: %d" largerThan.Length
 
+    puzzle2.puz2
     0 // return an integer exit code

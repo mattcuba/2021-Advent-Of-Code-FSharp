@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Include="puzzle2.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
 
