@@ -6,4 +6,5 @@ open System
 let main argv =
     puzzle1.puz1
     puzzle2.puz2
+    Sequences.sequences
     0 // return an integer exit code
