@@ -33,6 +33,12 @@ let folder state (direction, distance) =
         { state with 
             HorizontalPosition = state.HorizontalPosition + distance
             VerticalPosition = state.VerticalPosition + distance * state.CurrentAim }
+    | _ -> 
+        { state with 
+            HorizontalPosition = state.HorizontalPosition
+            VerticalPosition = state.VerticalPosition
+            CurrentAim = state.CurrentAim
+        }
 
 let puz4 =
     let lines = IO.File.ReadLines @"C:\adventofcode\02\input.txt"
