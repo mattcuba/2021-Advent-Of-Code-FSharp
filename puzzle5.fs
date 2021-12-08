@@ -29,8 +29,6 @@ let puz5 =
     let reversedEpsilon = epsilon |> Array.rev
     // convert the binary arrays into decimal values
     let decimalGamma = binaryArrayToDecimal reversedGamma
-    printfn "Gamma = %d" decimalGamma
     let decimalEpsilon = binaryArrayToDecimal reversedEpsilon 
-    printfn "Epsilon = %d" decimalEpsilon
     let product = decimalGamma * decimalEpsilon
     printfn "Puzzle 5:  The power consumption is %d" product
