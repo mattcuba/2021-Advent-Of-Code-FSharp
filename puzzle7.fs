@@ -56,12 +56,29 @@ let rec callNumbersAgainstCard
         
 let playTheGame
     (theCallNumbers: int[])
-    (theBingoCards: int[] list list) =
+    (theBingoCards: int[] list list)
+    (firstWinner: bool)=
     let result = theBingoCards |> List.map (fun x -> callNumbersAgainstCard x theCallNumbers 0)
-    let winningCard = result |> List.sortBy (fun x -> fst(x)) |> List.head
-    let steps = fst(winningCard) + 1
-    let score = snd(winningCard)
-    (steps, score)
+    if firstWinner then
+        let winningCard = result |> List.sortBy (fun x -> fst(x)) |> List.head
+        let steps = fst(winningCard) + 1
+        let score = snd(winningCard)
+        (steps, score)
+    else
+        let lastWinningCard = result |> List.sortByDescending (fun x -> fst(x)) |> List.head
+        let steps = fst(lastWinningCard) + 1
+        let score = snd(lastWinningCard)
+        (steps, score)
+
+let playToWin
+    (theCallNumbers: int[])
+    (theBingoCards: int[] list list)  =
+    playTheGame theCallNumbers theBingoCards true
+
+let playToLose
+    (theCallNumbers: int[])
+    (theBingoCards: int[] list list)  =
+    playTheGame theCallNumbers theBingoCards false
 
 let composeCallListAndBoards (data: string) =
     let splitLines = List.ofSeq(data.Split([|'\n'|]))
@@ -73,8 +90,11 @@ let composeCallListAndBoards (data: string) =
 let puz7 =
     let data = IO.File.ReadAllText @"C:\adventofcode\04\input.txt"
     let (callNumbers, bingoCards) = composeCallListAndBoards data
-    let (numberBalls, score) = playTheGame callNumbers bingoCards
+    let (numberBalls, score) = playToWin callNumbers bingoCards
     printfn "Puzzle 7:  Winning card took %d balls and scored %d" numberBalls score
+    let (lastNumBalls, lastScore) = playToLose callNumbers bingoCards
+    printfn "Puzzle 8:  Last winning card took %d balls and scored %d" lastNumBalls lastScore
     0
+
 
 
