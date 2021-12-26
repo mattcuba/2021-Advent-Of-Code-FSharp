@@ -10,4 +10,5 @@ let main argv =
     puzzle4.puz4
     puzzle5.puz5
     puzzle6.puz6
+    puzzle7.puz7
     0 // return an integer exit code
