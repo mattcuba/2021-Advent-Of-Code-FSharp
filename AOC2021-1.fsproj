@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Include="puzzle11.fs" />
     <Compile Include="puzzle9.fs" />
     <Compile Include="puzzle7.fs" />
     <Compile Include="puzzle6.fs" />
